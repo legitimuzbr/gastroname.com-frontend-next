@@ -21,12 +21,18 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@prisma/client": "^5.3.1",
     "@vercel/postgres": "^0.5.0",
+    "@vercel/postgres-kysely": "^0.5.0",
     "bootstrap": "^5.3.2",
     "dotenv": "^16.3.1",
     "mongodb": "^6.1.0",
     "next": "^13.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "prima": "^0.0.1",
+    "prisma": "^5.3.1"
   }
 }

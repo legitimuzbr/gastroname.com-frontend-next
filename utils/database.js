@@ -1,16 +1,24 @@
-import { createKysely } from "@vercel/postgres-kysely";
+import { sql } from "@vercel/postgres";
 
-interface Database {
-  person: PersonTable; // see github.com/kysely-org/kysely
-  pet: PetTable;
-  movie: MovieTable;
+export default async function Cart({ params }) {
+  const { rows } = await sql`CREATE TABLE "public.users" (
+    "id" serial NOT NULL,
+    "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "ref" TEXT NOT NULL,
+    "itens" integer NOT NULL,
+    CONSTRAINT "users_pk" PRIMARY KEY ("id")
+  ) WITH (
+    OIDS=FALSE
+  );`;
+
+  return (
+    <div>
+      {rows.map((row) => (
+        <div key={row.id}>
+          {row.id} - {row.quantity}
+        </div>
+      ))}
+    </div>
+  );
 }
-
-const db = createKysely<Database>();
-
-const person = await db
-  .selectFrom('person')
-  .innerJoin('pet', 'pet.owner_id', 'person.id')
-  .select(['first_name', 'pet.name as pet_name'])
-  .where('person.id', '=', id)
-  .executeTakeFirst();
