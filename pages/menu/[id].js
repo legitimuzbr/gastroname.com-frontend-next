@@ -1,12 +1,12 @@
-
+import { useRouter } from "next/router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Navbar from "../../components/Navbar"
 import Cardapio from "../../components/Cardapio"
 
 export default function Menu() {  
-
-  const id = "teste"
+  const router = useRouter();
+  const id = router.query.id;
   return (
     <>
       <Navbar />
